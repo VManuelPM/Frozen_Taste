@@ -1,0 +1,64 @@
+<% include partials/_header %>
+
+<div class="container">
+    <div class="row mt-5">
+        <!--Lista BD-->
+        <div class="col-md-10">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <th>n°</th>
+                    <th>Producto</th>
+                    <th>Tipo</th>
+                    <th>Sabor</th>
+                    <th>Linea</th>
+                    <th>Acción</th>
+                </thead>
+                <tbody>
+                    <% if(data){%>
+                    <% for(var i=0; i<data.length; i++){%>
+                    <tr>
+                        <td><%= (i+1) %></td>
+                        <td><%= data[i].nombre_producto %></td>
+                        <td><%= data[i].tipo %></td>
+                        <td><%= data[i].sabor %></td>
+                        <td><%= data[i].linea %></td>
+                        <td>
+                            <a href="/deleteProducto/<%= data[i].id_producto %>" class="btn btn-danger">Borrar</a>
+                            <a href="/updateProducto/<%= data[i].id_producto  %>" class="btn btn-info">Actualizar</a>
+                        </td>
+                    </tr>
+                    <%}%>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+
+        <!--Formulario de Insert-->
+        <div class="col-md-5">
+            <div class="card ">
+                <div class="card-body">
+                    <form action="/addProducto" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="nombre_producto" id="nombre_producto" placeholder="nombre_producto"
+                                class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="sabor">
+                                <% if(dataS){%>
+                                    <% for(var i=0; i<dataS.length; i++){%>
+                                    <option value='<%= dataS[i].id_sabor %>'> <%= dataS[i].sabor %> </option>
+                                    <%}%>
+                                <%}%>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Guardar Usuario
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include partials/_footer %>

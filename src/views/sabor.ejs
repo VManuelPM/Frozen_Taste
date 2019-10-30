@@ -1,0 +1,48 @@
+<% include partials/_header %>
+
+<div class="container">
+    <div class="row mt-5">
+        <!--Lista BD-->
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <th>n°</th>
+                    <th>Sabor</th>
+                    <th>Acción</th>
+                </thead>
+                <tbody>
+                    <% if(data){%>
+                    <% for(var i=0; i<data.length; i++){%>
+                    <tr>
+                        <td><%= (i+1) %></td>
+                        <td><%= data[i].sabor %></td>
+                        <td>
+                        <a href="/deleteSabor/<%= data[i].id_sabor %>" class="btn btn-danger">Borrar</a>
+                        <a href="/updateSabor/<%= data[i].id_sabor  %>" class="btn btn-info">Actualizar</a>
+                        </td>
+                    </tr>
+                    <%}%>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+
+        <!--Formulario de Insert-->
+        <div class="col-md-5">
+            <div class="card ">
+                <div class="card-body">
+                    <form action="/addSabor" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="sabor" id="sabor" placeholder="sabor" class="form-control" required />
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Guardar Sabor
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include partials/_footer %>

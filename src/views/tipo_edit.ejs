@@ -1,0 +1,21 @@
+<% include partials/_header %>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/updateTipo/<%= data.id_tipo %>" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="tipo" id="tipo" value="<%= data.tipo %>"
+                                class="form-control" required/>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Editar Tipo
+                        </button> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include partials/_footer %>

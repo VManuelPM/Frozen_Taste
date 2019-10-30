@@ -1,0 +1,73 @@
+<% include partials/_header %>
+
+<div class="container">
+    <div class="row mt-5">
+        <!--Lista BD-->
+        <div class="col-md-10">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <th>n°</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Rol</th>
+                    <th>Acción</th>
+                </thead>
+                <tbody>
+                    <% if(data){%>
+                    <% for(var i=0; i<data.length; i++){%>
+                    <tr>
+                        <td><%= (i+1) %></td>
+                        <td><%= data[i].nombre %></td>
+                        <td><%= data[i].apellido %></td>
+                        <td><%= data[i].email %></td>
+                        <td><%= data[i].password %></td>
+                        <td><%= data[i].rol %></td>
+                        <td>
+                        <a href="/delete/<%= data[i].id_usuario %>" class="btn btn-danger">Borrar</a>
+                        <a href="/update/<%= data[i].id_usuario  %>" class="btn btn-info">Actualizar</a>
+                        </td>
+                    </tr>
+                    <%}%>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+
+        <!--Formulario de Insert-->
+        <div class="col-md-5">
+            <div class="card ">
+                <div class="card-body">
+                    <form action="/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="nombre" id="nombre" placeholder="nombre" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="apellido" id="apellido" placeholder="apellido"
+                                class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="email" id="email" placeholder="email" class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" id="password" placeholder="Contraseña"
+                                class="form-control" required />
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="rol">
+                                <option value="us" selected>Usuario</option>
+                                <option value="ad">Admin</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Guardar Usuario
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include partials/_footer %>

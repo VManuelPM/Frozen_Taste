@@ -1,0 +1,21 @@
+<% include partials/_header %>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/updateSabor/<%= data.id_sabor %>" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="Sabor" id="Sabor" value="<%= data.sabor %>"
+                                class="form-control" required/>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Editar Sabor
+                        </button> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include partials/_footer %>
