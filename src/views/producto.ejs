@@ -25,7 +25,7 @@
                         <td>
                             <a href="/deleteProducto/<%= data[i].id_producto %>/<%= data[i].id_sabor %>/<%= data[i].id_linea %>" 
                                 class="btn btn-danger">Borrar</a>
-                            <a href="/updateProducto/<%= data[i].id_producto %>/<%= data[i].id_sabor %>/<%= data[i].id_linea %>" 
+                            <a href="/updateProducto/<%= data[i].id_producto %>/<%= data[i].id_sabor %>/<%= data[i].id_linea %>/<%= data[i].id_tipo %>" 
                                 class="btn btn-info">Actualizar</a>
                         </td>
                     </tr>
@@ -72,7 +72,7 @@
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">
-                            Guardar Usuario
+                            Guardar Producto
                         </button>
                     </form>
                 </div>

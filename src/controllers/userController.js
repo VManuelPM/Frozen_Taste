@@ -18,7 +18,7 @@ controller.save = (req, res) => {
     const data = req.body;
     req.getConnection((err, conn) => {
         conn.query("INSERT INTO USUARIOS set ?", [data], (err, user) => {
-            res.redirect("/");
+            res.redirect("/users");
         });
     });
 };
@@ -40,7 +40,7 @@ controller.update = (req, res) => {
     const newUser = req.body;
     req.getConnection((err,conn) =>{
         conn.query('UPDATE USUARIOS SET ? WHERE id_usuario = ?', [newUser, id_usuario],(err, rows) =>{
-            res.redirect('/');
+            res.redirect('/users');
         });
     });
 };
@@ -52,7 +52,7 @@ controller.delete = (req, res) => {
             "DELETE FROM usuarios WHERE id_usuario = ?",
             [id_usuario],
             (err, rows) => {
-                res.redirect("/");
+                res.redirect("/users");
             }
         );
     });

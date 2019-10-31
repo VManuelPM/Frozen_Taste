@@ -4,30 +4,55 @@
         <div class="col-md-5">
             <div class="card">
                 <div class="card-body">
-                    <form action="/update/<%= data.id_usuario %>" method="POST">
+                    <form action="/updateProducto/<%= data.id_producto %>/<%= data.id_producto_sabor %>/<%= data.id_producto_linea %>" 
+                        method="POST">
                         <div class="form-group">
-                            <input type="text" name="nombre_producto" id="nombre_producto" value="<%= data.nombre %>"
+                            <input type="text" name="nombre_producto" id="nombre_producto" value="<%= data.nombre_producto %>"
                                 class="form-control" required/>
                         </div>
+
+                        <div class="form-group"> 
+                                <select class="form-control" name="tipo">
+                                    <% if(dataT){%>
+                                        <% for(var i=0; i<dataL.length; i++){%>
+                                       <% var selected = ( data.id_tipo == dataT[i].id_tipo ) ? "selected" : ""; %>
+                                        <option value='<%= dataT[i].id_tipo %>' <%=selected %> > 
+                                            <%= dataT[i].tipo %>   
+                                        </option>
+                                        <%}%>
+                                    <%}%>
+                                </select>
+                            </div>
+
+                            
                         <div class="form-group">
-                            <input type="text" name="apellido" id="apellido" value="<%= data.apellido %>"
-                                class="form-control" required />
-                        </div>
+                                <select class="form-control" name="sabor">
+                                    <% if(dataT){%>
+                                        <% for(var i=0; i<dataL.length; i++){%>
+                                       <% var selected = ( data.id_sabor == dataS[i].id_sabor ) ? "selected" : ""; %>
+                                        <option value='<%= dataS[i].id_sabor %>' <%=selected %> > 
+                                            <%= dataS[i].sabor %>   
+                                        </option>
+                                        <%}%>
+                                    <%}%>
+                                </select>
+                            </div>
+
                         <div class="form-group">
-                            <input type="text" name="email" id="email" value="<%= data.email %>" class="form-control" required/>
-                        </div>
-                        <div class="form-group">
-                            <input type="password" name="password" id="password" value="<%= data.password %>"
-                                class="form-control" required/>
-                        </div>
-                        <div class="form-group">
-                            <select class="form-control" name="rol">
-                                <option value="us" <% if(data.rol== 'us') { %> selected <% }%>>Usuario</option>
-                                <option value="ad" <% if(data.rol== 'ad') { %> selected <% }%>>Admin</option>
+                            <select class="form-control" name="linea">
+                                <% if(dataL){%>
+                                    <% for(var i=0; i<dataL.length; i++){%>
+                                   <% var selected = ( data.id_linea == dataL[i].id_linea ) ? "selected" : ""; %>
+                                    <option value='<%= dataL[i].id_linea %>' <%=selected %> > 
+                                        <%= dataL[i].linea %>   
+                                    </option>
+                                    <%}%>
+                                <%}%>
                             </select>
                         </div>
+
                         <button type="submit" class="btn btn-primary">
-                            Editar Usuario
+                            Editar Producto
                         </button>
                     </form>
                 </div>
