@@ -17,8 +17,8 @@
 5. npm run dev
 6. En un navegador colocamos localhost:3000
 
-## Code Examples
-Show examples of usage:
+## Important
+comandos:
 `npm install`
 `npm run dev`
 
