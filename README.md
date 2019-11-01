@@ -1,5 +1,5 @@
 # Frozen Taste
-> Frozen Taste administración
+> Frozen Taste administración, en src/database encuentras la imagen del diagrama entidad relación
 
 
 ## Technologies
