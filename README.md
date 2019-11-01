@@ -29,7 +29,7 @@ To-do list:
 
 
 ## Status
-Project esta: _in progress_
+Project esta: _en progreso_
 
 ## Contact
-Creado por [@VManuelPM](vpedraza@bancolombia.com)!
+Creado por [@VManuelPM] - vpedraza@bancolombia.com!
