@@ -1,4 +1,6 @@
+const bcrypt = require('bcrypt');
 const controller = {};
+const users = [];
 
 controller.list = (req, res) => {
     req.getConnection((err, conn) => {
@@ -14,14 +16,39 @@ controller.list = (req, res) => {
     });
 };
 
-controller.save = (req, res) => {
-    const data = req.body;
-    req.getConnection((err, conn) => {
-        conn.query("INSERT INTO USUARIOS set ?", [data], (err, user) => {
-            res.redirect("/users");
-        });
-    });
+controller.save =async(req, res) => {
+    try{
+        const data = req.body;
+       const hashedPassword = await bcrypt.hash(req.body.password, 10);
+       users.push({
+            nombre: data.nombre,
+            apellido: data.apellido,
+            email: data.email,
+            password: hashedPassword,
+            rol: data.rol
+       });
+      
+       req.getConnection((err, conn) => {
+        conn.query("SELECT u.email FROM USUARIOS u WHERE email=?", data.email, (err, user) => {
+            console.log(err);
+                conn.query("INSERT INTO USUARIOS SET ?", users, (err, user) => {
+                    if(err){
+                        res.redirect('/user');
+                    }else{
+                    console.log("error " + err);
+                    res.redirect('/user');
+                    }
+                     });
+                });
+                    
+       });
+    
+    }catch{
+        res.redirect('/user');
+    }
+    console.log(users)
 };
+
 
 controller.edit = (req, res) => {
     const id_usuario = req.params.id;
@@ -40,7 +67,7 @@ controller.update = (req, res) => {
     const newUser = req.body;
     req.getConnection((err,conn) =>{
         conn.query('UPDATE USUARIOS SET ? WHERE id_usuario = ?', [newUser, id_usuario],(err, rows) =>{
-            res.redirect('/users');
+            res.redirect('/user');
         });
     });
 };
@@ -52,7 +79,7 @@ controller.delete = (req, res) => {
             "DELETE FROM usuarios WHERE id_usuario = ?",
             [id_usuario],
             (err, rows) => {
-                res.redirect("/users");
+                res.redirect("/user");
             }
         );
     });

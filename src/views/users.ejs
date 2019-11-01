@@ -3,14 +3,13 @@
 <div class="container">
     <div class="row mt-5">
         <!--Lista BD-->
-        <div class="col-md-10">
+        <div class="row d-flex justify-content-center">
             <table class="table table-bordered table-hover">
                 <thead>
                     <th>n°</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Email</th>
-                    <th>Password</th>
                     <th>Rol</th>
                     <th>Acción</th>
                 </thead>
@@ -22,7 +21,6 @@
                         <td><%= data[i].nombre %></td>
                         <td><%= data[i].apellido %></td>
                         <td><%= data[i].email %></td>
-                        <td><%= data[i].password %></td>
                         <td><%= data[i].rol %></td>
                         <td>
                         <a href="/delete/<%= data[i].id_usuario %>" class="btn btn-danger">Borrar</a>

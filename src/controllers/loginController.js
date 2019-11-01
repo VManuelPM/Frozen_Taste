@@ -1,20 +1,33 @@
+const bcrypt = require('bcrypt');
 const controller = {};
+const users = [];
 
-controller.inicio = (req, res) => {
-    res.send("works");   
+controller.load=(req,res)=>{
+    res.render('login.ejs')
 };
 
 
-controller.login = (req, res) => {
-    req.getConnection((err, conn) => {
+controller.entrar=async(req,res)=>{
+    try{
         const data = req.body;
-        console.log(data);
-        conn.query("SELECT * FROM USARIOS", (err, linea) => {
-            if (err) {
-                next(err);
-            }
-            console.log(linea);
-            res.redirect("/users");
-        });
-    });
+       const hashedPassword = await bcrypt.hash(req.body.password, 10);
+ 
+       req.getConnection((err, conn) => {
+        conn.query("SELECT u.email,u.password FROM USUARIOS u WHERE email=?", data.email, (err, user) => {
+                    if(user.email==data.email && user.password==hashedPassword){
+                        res.redirect('/user');
+                    }else{
+                    console.log("error " + err);
+                    res.redirect('/login');
+                    }
+                });
+            });            
+    }catch{
+        console.log("error catch " + err);
+        res.redirect('/login');
+    }
+    console.log(users)
 };
+
+
+module.exports = controller;
