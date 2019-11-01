@@ -3,7 +3,7 @@
 
 
 ## Technologies
-* Node.js --> Liviano y eficiente
+* Node.js --> Una palabra...rendimiento, porque permite crear trabajos de gran calidad y disminuye el margen de experimentar errores técnicos.
 * Ejs --> Posibilidad de incluir JS en las vistas
 * Bootstrap --> Framework de Front-end que facilita mucho el front
 * Express --> Al tener poco tiempo para el desarrollo express facilita la creación de aplicaciones web en menos tiempo
