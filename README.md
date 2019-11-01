@@ -3,11 +3,11 @@
 
 
 ## Technologies
-* Node.js
-* Ejs
-* Bootstrap
-* Express
-* Mysql
+* Node.js --> Liviano y eficiente
+* Ejs --> Posibilidad de incluir JS en las vistas
+* Bootstrap --> Framework de Front-end que facilita mucho el front
+* Express --> Al tener poco tiempo para el desarrollo express facilita la creación de aplicaciones web en menos tiempo
+* Mysql --> Motor de bd estandar para la mayoria de sitios web, además de su facilidad de gestión. 
 
 ## Setup
 1. Abrimos el proyecto (preferible en VSCode) 
